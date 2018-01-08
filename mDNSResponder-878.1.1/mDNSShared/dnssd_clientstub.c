@@ -430,9 +430,9 @@ static void FreeDNSServiceOp(DNSServiceOp *x)
     // then sockfd could legitimately contain a failing value (e.g. dnssd_InvalidSocket)
     if ((x->sockfd ^ x->validator) != ValidatorBits)
     {
-        static DNSServiceOp *op_were_not_going_to_free_but_we_need_to_fool_the_analyzer;
+//        static DNSServiceOp *op_were_not_going_to_free_but_we_need_to_fool_the_analyzer;
         syslog(LOG_WARNING, "dnssd_clientstub attempt to dispose invalid DNSServiceRef %p %08X %08X", x, x->sockfd, x->validator);
-        op_were_not_going_to_free_but_we_need_to_fool_the_analyzer = x;
+//        op_were_not_going_to_free_but_we_need_to_fool_the_analyzer = x;
     }
     else
     {

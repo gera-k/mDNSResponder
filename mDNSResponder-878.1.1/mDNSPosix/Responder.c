@@ -631,13 +631,13 @@ static mStatus RegisterOurServices(void)
 static void DeregisterOurServices(void)
 {
     PosixService *thisServ;
-    int thisServID;
+//    int thisServID;
 
     while (gServiceList != NULL) {
         thisServ = gServiceList;
         gServiceList = thisServ->next;
 
-        thisServID = thisServ->serviceID;
+//        thisServID = thisServ->serviceID;
 
         mDNS_DeregisterService(&mDNSStorage, &thisServ->coreServ);
 

@@ -85,7 +85,7 @@ struct ifi_info *get_ifi_info_linuxv6(int family, int doaliases)
     struct ifi_info *ifi, *ifihead, **ifipnext, *ifipold, **ifiptr;
     FILE *fp = NULL;
     char addr[8][5];
-    int flags, myflags, index, plen, scope;
+    int flags, /*myflags,*/ index, plen, scope;
     char ifname[9], lastname[IFNAMSIZ];
     char addr6[32+7+1]; /* don't forget the seven ':' */
     struct addrinfo hints, *res0;
@@ -109,11 +109,11 @@ struct ifi_info *get_ifi_info_linuxv6(int family, int doaliases)
                       addr[4],addr[5],addr[6],addr[7],
                       &index, &plen, &scope, &flags, ifname) != EOF) {
 
-            myflags = 0;
+//            myflags = 0;
             if (strncmp(lastname, ifname, IFNAMSIZ) == 0) {
                 if (doaliases == 0)
                     continue;   /* already processed this interface */
-                myflags = IFI_ALIAS;
+//                myflags = IFI_ALIAS;
             }
             memcpy(lastname, ifname, IFNAMSIZ);
             ifi = (struct ifi_info*)calloc(1, sizeof(struct ifi_info));

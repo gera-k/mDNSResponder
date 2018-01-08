@@ -54,14 +54,14 @@ COREDIR = ../mDNSCore
 SHAREDDIR ?= ../mDNSShared
 JDK = /usr/jdk
 
-CC = @cc
-BISON = @bison
-FLEX = @flex
-ST = @strip
-LD = ld -shared
-CP = cp
-RM = rm
-LN = ln -s -f
+#CC = @cc
+#BISON = @bison
+#FLEX = @flex
+#ST = @strip
+#LD = ld -shared
+#CP = cp
+#RM = rm
+#LN = ln -s -f
 CFLAGS_COMMON = -I$(COREDIR) -I$(SHAREDDIR) -I$(OBJDIR) -fwrapv -W -Wall -DPID_FILE=\"/var/run/mdnsd.pid\" -DMDNS_UDS_SERVERPATH=\"/var/run/mdnsd\"
 CFLAGS_PTHREAD =
 LINKOPTS =
@@ -83,7 +83,7 @@ else
 CFLAGS_DEBUG = -Os -DMDNS_DEBUGMSGS=0
 OBJDIR ?= objects/prod
 BUILDDIR ?= build/prod
-STRIP = $(ST) -S
+#STRIP = $(ST) -S
 endif
 
 # Configure per-OS peculiarities
@@ -249,7 +249,7 @@ Daemon: setup $(BUILDDIR)/mdnsd
 	@echo "Responder daemon done"
 
 $(BUILDDIR)/mdnsd: $(DAEMONOBJS)
-	$(CC) -o $@ $+ $(LINKOPTS)
+	@$(CC) -o $@ $+ $(LINKOPTS)
 	@$(STRIP) $@
 
 # libdns_sd target builds the client library

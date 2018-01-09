@@ -84,6 +84,7 @@ CFLAGS_DEBUG = -Os -DMDNS_DEBUGMSGS=0
 OBJDIR ?= objects/prod
 BUILDDIR ?= build/prod
 #STRIP = $(ST) -S
+STRIP = echo
 endif
 
 # Configure per-OS peculiarities
